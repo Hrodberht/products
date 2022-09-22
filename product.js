@@ -28,6 +28,12 @@ const displayProduct = (product) => {
 
   document.title = title.toUpperCase();
 
+  const colorsList = colors
+    .map((color) => {
+      return `<span class="product-color" style="background: ${color}"></span>`;
+    })
+    .join("");
+
   productDOM.innerHTML = `<div class="product-wrapper">
         <img src="${img}" class="img" alt="${title}" />
         <div class="product-info">
@@ -35,7 +41,7 @@ const displayProduct = (product) => {
           <h5>${company}</h5>
           <span>${price / 100}</span>
           <div class="colors">
-            <span class="product-color"></span>
+            ${colorsList}
           </div>
           <p>
             ${description}
