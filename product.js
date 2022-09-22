@@ -1,11 +1,13 @@
 const productDOM = document.querySelector(".product");
-const url =
-  "https://course-api.com/javascript-store-single-product?id=rec43w3ipXvP28vog";
+const url = "https://course-api.com/javascript-store-single-product";
 
 const fetchProduct = async () => {
   try {
     productDOM.innerHTML = '<h4 class="product-loading">Loading...</h4>';
-    const response = await fetch(url);
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    console.log(id);
+    const response = await fetch(`${url}?id=${id}`);
     const data = await response.json();
     return data;
   } catch (error) {
